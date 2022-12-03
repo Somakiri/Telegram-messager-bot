@@ -1,0 +1,21 @@
+from telebot import TeleBot
+
+token = '5802033257:AAFXQ_R-c6tlPYWdAGI9eFRHRtwYmDsxxgU'
+bot = TeleBot(token)
+
+@bot.message_handler(commands=["start"])
+def startMassage(massage):
+    bot.send_message(massage.chat.id,
+                    'Усім привіт! Я є вашим телеграм помічником, який допоможе вам не пропускати, та вчасно долучатися до наших зібрань. '
+                    'Зібрання проходить у неділю об 20:00. У день проходження, приблизно о 12:00 я вам буду нагадувати про нашу зустріч, тому прошу слідкувати та не ігнорувати мене')
+
+
+@bot.message_handler(commands=["ad"])
+def requireMassage(massage):
+    bot.send_message(massage.chat.id,
+                     'НАГАДУЮЮЮ!!! Сьогодні відбудеться наше чергове зібрання о 20:00. Якщо у вас є поважна причина, через яку ви не можете прийти, відпишіться старшій адміністрації. '
+                     'Кого не буде на зібранні отримує догану автоматично. Хорошого всім дня, до зустрічі на зібранні.')
+
+
+bot.polling(non_stop=True, interval=0)
+
